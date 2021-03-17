@@ -498,6 +498,162 @@ footer {
   box-sizing: border-box;
 }
 
+.service-cards {
+  display: grid;
+  padding-bottom: 70px;
+  grid-column-gap: 30px;
+  grid-row-gap: 45px;
+
+  @include respond(960px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include respond(0, 960px) {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    position: relative;
+    background: $white;
+
+    @include respond(640px) {
+      min-height: 457px;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+
+  .service-image {
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: transparentize($dark, .6);
+    }
+  }
+
+  .service-inner {
+    color: $white;
+    height: 100%;
+    @include respond(760px) {
+      padding: 58px 40px 38px 80px;
+    }
+    @include respond(0, 760px) {
+      padding: 30px;
+    }
+    box-sizing: border-box;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .service-title {
+    @include respond(760px) {
+      font-size: 28px;
+    }
+    @include respond(0, 760px) {
+      font-size: 20px;
+    }
+    font-weight: bold;
+    line-height: 1.179;
+    letter-spacing: .7px;
+    display: inline-block;
+    color: $white;
+    text-decoration: none;
+    margin-bottom: 19px;
+    transition: color $transition-speed ease;
+
+    &:hover {
+      color: $orange;
+    }
+  }
+
+  .detail-link {
+    @include respond(640px) {
+      margin-top: auto;
+    }
+    @include respond(0, 640px) {
+      margin-top: 20px;
+    }
+  }
+
+  .service-annotation {
+    font-size: 16px;
+    line-height: 2.063;
+    font-weight: 300;
+    letter-spacing: .3px;
+
+    @include respond(0, 640px) {
+      margin: 25px 0;
+    }
+  }
+
+}
+
+.detail-link {
+  display: inline-flex;
+
+  &_dark {
+    color: $dark;
+  }
+
+  &_light {
+    color: $white;
+  }
+
+  align-items: center;
+  text-decoration: none;
+  letter-spacing: .7px;
+  transition: color $transition-speed ease;
+
+  @include respond(760px) {
+    margin-right: 22px;
+  }
+  @include respond(0, 760px) {
+    margin-top: 8px;
+  }
+
+  &_dark {
+    svg {
+      fill: $dark;
+    }
+
+    &:hover {
+      color: $orange;
+
+      svg {
+        fill: $orange;
+      }
+    }
+  }
+
+  &_light {
+    svg {
+      fill: $white;
+    }
+
+    &:hover {
+      color: $orange;
+
+      svg {
+        fill: $orange;
+      }
+    }
+  }
+
+  svg {
+    transition: fill $transition-speed ease;
+    margin-left: 20px;
+  }
+}
+
 .rent-cards {
   display: grid;
   padding-bottom: 50px;
@@ -536,14 +692,17 @@ footer {
         margin-top: 20px;
         flex-direction: column-reverse;
       }
+
       .price {
         display: inline-flex;
         font-weight: 500;
         color: $purple;
+
         svg {
           fill: $purple;
           transform: translateY(1px);
         }
+
         align-items: center;
       }
     }
@@ -588,36 +747,6 @@ footer {
       height: 100%;
       display: flex;
       flex-direction: column;
-    }
-
-    .product-link {
-      display: inline-flex;
-      color: $dark;
-      align-items: center;
-      text-decoration: none;
-      letter-spacing: .7px;
-      transition: color $transition-speed ease;
-
-      @include respond(760px) {
-        margin-right: 22px;
-      }
-      @include respond(0, 760px) {
-        margin-top: 8px;
-      }
-
-      &:hover {
-        color: $orange;
-
-        svg {
-          fill: $orange;
-        }
-      }
-
-      svg {
-        fill: $dark;
-        transition: fill $transition-speed ease;
-        margin-left: 20px;
-      }
     }
 
     .product-title {
