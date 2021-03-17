@@ -595,6 +595,7 @@ footer {
       color: $dark;
       align-items: center;
       text-decoration: none;
+      letter-spacing: .7px;
       transition: color $transition-speed ease;
 
       @include respond(760px) {
