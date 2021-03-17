@@ -72,7 +72,7 @@
     display: inline-block;
     position: absolute;
     pointer-events: none;
-    z-index: -1;
+    z-index: 0;
 
     @include respond($mobile-breakpoint) {
       left: -107px;
@@ -155,7 +155,12 @@
   }
 
   .email-element {
-    padding-bottom: 56px;
+    @include respond($mobile-breakpoint) {
+      margin-bottom: 56px;
+    }
+    @include respond(0, $mobile-breakpoint) {
+      margin-bottom: 35px;
+    }
   }
 
   .email-link {
@@ -172,4 +177,98 @@
   .contact-list {
     padding-top: 33px;
   }
+}
+
+.contact-form_block {
+  background: $contact-orange;
+  @include respond(0, 1195px) {
+    padding: 42px 0;
+  }
+  @include respond(1195px) {
+    padding: 116px 0;
+  }
+  overflow: hidden;
+
+  .heading {
+    font-size: 54px;
+    color: $white;
+    font-weight: bold;
+    line-height: 1.296;
+    letter-spacing: .5px;
+    @include respond(0, 1195px) {
+      font-size: 36px;
+    }
+    @include respond(1195px) {
+      font-size: 54px;
+    }
+  }
+
+
+  .submit-btn {
+    max-width: 200px;
+    width: 100%;
+  }
+
+  .form-columns {
+    display: flex;
+    @include respond(0, 1195px) {
+      flex-direction: column;
+    }
+    > .column {
+      position: relative;
+
+      &:last-child {
+        width: 100%;
+      }
+
+      &:first-child {
+        @include respond(0, 1195px) {
+          margin-bottom: 30px;
+        }
+        @include respond(1195px) {
+          padding-top: 24px;
+          max-width: 710px;
+          padding-right: 35px;
+          box-sizing: border-box;
+        }
+        @include respond(0, 1195px) {
+          width: 100%;
+        }
+      }
+
+      .contact-svg_small {
+        display: inline-block;
+        position: absolute;
+        pointer-events: none;
+        z-index: 0;
+
+        @include respond($mobile-breakpoint) {
+          left: -13px;
+          top: -74px;
+        }
+        @include respond(0, $mobile-breakpoint) {
+        }
+
+        svg {
+          fill: transparentize($purple, .95);
+          max-width: 100%;
+        }
+      }
+    }
+  }
+
+  .contact-form_annotation {
+    @include respond(0, 1195px) {
+      font-size: 20px;
+    }
+    @include respond(1195px) {
+      font-size: 30px;
+    }
+    color: $white;
+    line-height: 1.267;
+    margin-top: 18px;
+    letter-spacing: .8px;
+
+  }
+
 }

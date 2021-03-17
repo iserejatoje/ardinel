@@ -30,7 +30,7 @@ body {
 }
 
 .container {
-  max-width: 1290px;
+  max-width: 1330px;
   margin: 0 auto;
   width: 100%;
   padding: 0 $container-padding;
@@ -141,6 +141,8 @@ nav {
   background: transparent;
   border: none;
   outline: none;
+  cursor: pointer;
+  padding: 0;
 
   @include respond(1275px) {
     display: none;
@@ -178,6 +180,9 @@ header {
     padding-right: 15px;
     @include respond(0, 1275px) {
       margin-right: auto;
+    }
+    @include respond(0, $mobile-breakpoint) {
+      padding-right: 25px;
     }
   }
   .request {
@@ -222,6 +227,83 @@ header {
     @include respond(0, 1548px) {
       display: none;
     }
+  }
+}
+
+.form {
+  .form-controls {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .form-policy {
+    font-size: 14px;
+    color: $white;
+    line-height: 1.2;
+    font-weight: 500;
+    margin-left: 22px;
+    a {
+      color: $white;
+      font-weight: bold;
+      text-decoration: none;
+      line-height: 1.2;
+    }
+  }
+
+  textarea {
+    border-radius: 4px;
+    background: $white;
+    width: 100%;
+    max-width: 100%;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    max-height: 100px;
+    font-size: 16px;
+    padding: 12px 24px;
+    box-sizing: border-box;
+    color: $dark;
+    line-height: 1.875;
+    &::placeholder {
+      font-size: 16px;
+      color: rgb(147, 147, 147);
+      line-height: 1.875;
+    }
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="pasword"],
+  input[type="number"] {
+    height: 55px;
+    border-radius: 4px;
+    background: $white;
+    width: 100%;
+    max-width: 100%;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    font-size: 16px;
+    color: $dark;
+    padding: 0 24px;
+    box-sizing: border-box;
+    line-height: 1.875;
+    &::placeholder {
+      font-size: 16px;
+      color: rgb(147, 147, 147);
+      line-height: 1.875;
+    }
+  }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    &:not(:last-child) {
+      margin-bottom: 7px;
+    }
+  }
+  .column {
+    width: calc(50% - 3px);
   }
 }
 

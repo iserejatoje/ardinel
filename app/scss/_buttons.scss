@@ -22,4 +22,11 @@
       background: $orange-hovered;
     }
   }
+  &-purple {
+    background: $purple;
+    color: $white;
+    &:hover {
+      background: $purple;
+    }
+  }
 }
