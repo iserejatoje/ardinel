@@ -17,9 +17,9 @@ function mapInit() {
     let pin = new ymaps.Placemark([55.342913, 86.080155], {},
         {
             iconLayout: 'default#image',
-            iconImageHref: '/app/images/sprite.svg#map-pin',
-            iconImageSize: [108, 108],
-            iconImageOffset: [-54, -108]
+            iconImageHref: 'app/images/sprite.svg#map-pin',
+            iconImageSize: [108, 91],
+            iconImageOffset: [-54, -91]
         });
     map.geoObjects.add(pin);
 }
