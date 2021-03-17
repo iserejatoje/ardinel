@@ -1,0 +1,25 @@
+@import "variables";
+
+.btn {
+  font-family: Commissioner, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  letter-spacing: .75px;
+  cursor: pointer;
+  height: 55px;
+  line-height: 52px;
+  display: inline-block;
+  text-decoration: none;
+  user-select: none;
+  padding: 0 32px;
+  transition: background $transition-speed ease;
+  &-orange {
+    background: $orange;
+    color: $white;
+    &:hover {
+      background: $orange-hovered;
+    }
+  }
+}

@@ -1,0 +1,175 @@
+@import "variables";
+@import "mixins";
+
+.contact-block {
+  background: $gray;
+
+  .contact-map {
+    position: relative;
+  }
+
+  .map-container {
+    position: relative;
+  }
+
+  .map-communications {
+    position: relative;
+    overflow: hidden;
+
+    @include respond($mobile-breakpoint) {
+      display: flex;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      padding-top: 100px;
+    }
+
+    @include respond(0, $mobile-breakpoint) {
+      padding-top: 40px;
+      padding-bottom: 55px;
+    }
+
+  }
+
+  .map-communications_block {
+    @include respond($mobile-breakpoint) {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .map-wrapper {
+
+    position: relative;
+    z-index: 1;
+
+    @include respond($mobile-breakpoint) {
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    #map {
+      @include respond($mobile-breakpoint) {
+        height: 769px;
+        width: 50%;
+      }
+      @include respond(0, $mobile-breakpoint) {
+        height: 280px;
+        width: 100%;
+      }
+    }
+  }
+
+  .ymaps-layers-pane {
+    filter: brightness(93%);
+  }
+
+  .contact-svg {
+    display: inline-block;
+    position: absolute;
+    pointer-events: none;
+    z-index: -1;
+
+    @include respond($mobile-breakpoint) {
+      left: -107px;
+      top: 42px;
+      max-width: 50%;
+    }
+    @include respond(0, $mobile-breakpoint) {
+      right: -100px;
+      top: 42px;
+    }
+
+    svg {
+      fill: transparentize($dark, .97);
+      max-width: 100%;
+    }
+  }
+
+  .label {
+    font-size: 13px;
+    color: $purple;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1.769;
+    letter-spacing: 2.5px;
+
+    @include respond($mobile-breakpoint) {
+      margin-bottom: 16px;
+    }
+    @include respond(0, $mobile-breakpoint) {
+      margin-bottom: 10px;
+    }
+  }
+
+  .address-element {
+    @include respond($mobile-breakpoint) {
+      font-size: 21px;
+    }
+    @include respond(0, $mobile-breakpoint) {
+      font-size: 19px;
+    }
+    font-weight: 500;
+    line-height: 1.571;
+    display: flex;
+    align-items: center;
+    letter-spacing: .5px;
+    position: relative;
+    padding-left: 25px;
+
+    @include respond($mobile-breakpoint) {
+      margin-bottom: 40px;
+    }
+    @include respond(0, $mobile-breakpoint) {
+      margin-bottom: 28px;
+    }
+
+    svg {
+      position: absolute;
+      left: -2px;
+      top: 6px;
+      min-width: 20px;
+    }
+  }
+
+  .phone-element {
+    @include respond($mobile-breakpoint) {
+      margin-bottom: 44px;
+    }
+    @include respond(0, $mobile-breakpoint) {
+      margin-bottom: 28px;
+    }
+  }
+
+  .phone-link {
+    font-size: 28px;
+    font-weight: bold;
+    color: $dark;
+    text-decoration: none;
+    display: inline-block;
+    letter-spacing: .2px;
+  }
+
+  .email-element {
+    padding-bottom: 56px;
+  }
+
+  .email-link {
+    font-size: 21px;
+    line-height: 1.571;
+    font-weight: 500;
+    color: $dark;
+    text-decoration: none;
+    border-bottom: 1px solid $purple;
+    letter-spacing: .4px;
+    padding-bottom: 4px;
+  }
+
+  .contact-list {
+    padding-top: 33px;
+  }
+}

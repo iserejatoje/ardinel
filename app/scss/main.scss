@@ -1,0 +1,346 @@
+@import "variables";
+@import "mixins";
+@import "fonts";
+@import "buttons";
+@import "contacts";
+
+body,
+html {
+  height: 100%;
+  font-family: Commissioner, sans-serif;
+}
+
+svg {
+  display: block;
+}
+
+body {
+  box-sizing: border-box;
+  color: $dark;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+
+  .app-inner {
+    flex: 1 0 auto;
+  }
+}
+
+.container {
+  max-width: 1290px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 $container-padding;
+  box-sizing: border-box;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  .logo-annotation {
+    @include respond(0, 1755px) {
+      display: none;
+    }
+    font-size: 11px;
+    color: transparentize($dark, .5);
+    font-weight: 500;
+    text-transform: uppercase;
+    line-height: 2.091;
+    margin-left: 28px;
+    padding-left: 26px;
+    position: relative;
+    letter-spacing: 2.2px;
+
+    &:before {
+      width: 1px;
+      background: transparentize($dark, .7);
+      display: block;
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 4px;
+      bottom: 2px;
+    }
+  }
+
+  .logo-link {
+    display: block;
+
+    svg {
+      max-width: 100%;
+    }
+  }
+}
+
+.phone {
+  .phone-link {
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+}
+
+.content-block {
+  .block-title {
+    @include respond($mobile-breakpoint) {
+      font-size: 52px;
+    }
+    @include respond(0, $mobile-breakpoint) {
+      font-size: 34px;
+    }
+    font-weight: bold;
+    line-height: 1.346;
+    letter-spacing: .4px;
+  }
+}
+
+nav {
+  display: flex;
+
+  .nav-link {
+    font-weight: 500;
+    color: $dark;
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: .35px;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    padding: 0 8px;
+
+    svg {
+      margin-left: 10px;
+    }
+
+    @include respond(0, $mobile-breakpoint) {
+      margin: 6px 0;
+    }
+
+    &:not(:last-child) {
+      @include respond(1755px) {
+        margin-right: 28px;
+      }
+      @include respond($mobile-breakpoint, 1755px) {
+        margin-right: 20px;
+      }
+    }
+
+  }
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.burger {
+  background: transparent;
+  border: none;
+  outline: none;
+
+  @include respond(1275px) {
+    display: none;
+  }
+
+  &:hover {
+    .burger-line {
+      background: $purple;
+    }
+  }
+
+  .burger-line {
+    transition: background $transition-speed ease;
+    height: 2px;
+    width: 32px;
+    background: $dark;
+    display: block;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+}
+
+header {
+  background: $white;
+  box-shadow: 0 0 50px 0 rgba(38, 37, 39, 0.3);
+  .full-height {
+    height: 100px;
+  }
+  .phone {
+    margin-right: 55px;
+  }
+  .logo {
+    padding-right: 15px;
+    @include respond(0, 1275px) {
+      margin-right: auto;
+    }
+  }
+  .request {
+    @include respond(0, 1275px) {
+      display: none;
+    }
+  }
+  nav {
+    @include respond(0, 1275px) {
+      display: none;
+    }
+    @include respond(1548px) {
+      margin: 0 auto;
+    }
+    @include respond(1275px, 1548px) {
+      margin-left: auto;
+      margin-right: 25px;
+    }
+    .nav-link {
+      &:after {
+        content: '';
+        position: absolute;
+        background: $white;
+        height: 4px;
+        transition: opacity $transition-speed ease;
+        left: 0;
+        right: 0;
+        bottom: 4px;
+        background: $purple;
+        opacity: 0;
+      }
+      &:hover {
+        &:after {
+          transition: opacity $transition-speed ease;
+          opacity: 1;
+        }
+      }
+    }
+  }
+  .communication {
+    padding-left: 40px;
+    @include respond(0, 1548px) {
+      display: none;
+    }
+  }
+}
+
+.site-panel {
+  @include respond(1364px) {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  @include respond(0, 1364px) {
+    padding-left: $container-padding;
+    padding-right: $container-padding;
+  }
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+
+  .phone {
+    position: relative;
+    margin-bottom: 7px;
+  }
+
+  .phone-icon {
+    position: absolute;
+    right: calc(100% + 11px);
+    top: 1px;
+  }
+
+  .phone-link {
+    color: $dark;
+    letter-spacing: .2px;
+  }
+
+  .email-link {
+    color: transparentize($dark, .5);
+  }
+}
+
+.email-link,
+.phone-link,
+.nav-link {
+  transition: color $transition-speed ease;
+
+  &:hover {
+    color: $purple;
+  }
+}
+
+.gray-svg {
+  fill: transparentize($dark, .7);
+}
+
+footer {
+  background: $light-gray;
+  flex: 0 0 auto;
+  .full-height {
+    @include respond(1548px) {
+      height: 100px;
+    }
+  }
+  .communication {
+    @include respond(1548px) {
+      padding-left: 40px;
+    }
+    @include respond(0, 1548px) {
+      padding-left: 30px;
+      margin-bottom: 30px;
+    }
+  }
+  nav {
+    @include respond(0, $mobile-breakpoint) {
+      flex-direction: column;
+      align-items: center;
+    }
+    @include respond(0, 1548px) {
+      margin: 35px 0;
+    }
+    @include respond(1548px) {
+      margin: 0 auto;
+    }
+    @include respond(1548px) {
+      .nav-link {
+        &:after {
+          content: '';
+          position: absolute;
+          background: $white;
+          height: 4px;
+          transition: opacity $transition-speed ease;
+          left: 0;
+          right: 0;
+          bottom: 4px;
+          background: $purple;
+          opacity: 0;
+        }
+        &:hover {
+          &:after {
+            transition: opacity $transition-speed ease;
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+  }
+  .phone {
+    @include respond(0, 1548px) {
+      display: flex;
+    }
+    @include respond(1548px) {
+      margin-right: 55px;
+    }
+  }
+  .logo {
+    @include respond(1548px) {
+      padding-right: 15px;
+    }
+  }
+  @include respond(0, 1548px) {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    flex-direction: column;
+  }
+}
