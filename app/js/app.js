@@ -1,11 +1,7 @@
 $(document).ready(function () {
-
 });
 
 let map;
-
-// 0: 55.342913
-// 1: 86.080155
 
 function mapInit() {
     map = new ymaps.Map('map', {
