@@ -85,18 +85,16 @@ body {
 
 }
 
-.content-block {
-  .block-title {
-    @include respond($mobile-breakpoint) {
-      font-size: 52px;
-    }
-    @include respond(0, $mobile-breakpoint) {
-      font-size: 34px;
-    }
-    font-weight: bold;
-    line-height: 1.346;
-    letter-spacing: .4px;
+.block-title {
+  @include respond($mobile-breakpoint) {
+    font-size: 52px;
   }
+  @include respond(0, $mobile-breakpoint) {
+    font-size: 34px;
+  }
+  font-weight: bold;
+  line-height: 1.346;
+  letter-spacing: .4px;
 }
 
 nav {
@@ -172,12 +170,15 @@ header {
   box-shadow: 0 0 50px 0 rgba(38, 37, 39, 0.3);
   position: relative;
   z-index: 2;
+
   .full-height {
     height: 100px;
   }
+
   .phone {
     margin-right: 55px;
   }
+
   .logo {
     padding-right: 15px;
     @include respond(0, 1275px) {
@@ -187,11 +188,13 @@ header {
       padding-right: 25px;
     }
   }
+
   .request {
     @include respond(0, 1275px) {
       display: none;
     }
   }
+
   nav {
     @include respond(0, 1275px) {
       display: none;
@@ -203,6 +206,7 @@ header {
       margin-left: auto;
       margin-right: 25px;
     }
+
     .nav-link {
       &:after {
         content: '';
@@ -216,6 +220,7 @@ header {
         background: $purple;
         opacity: 0;
       }
+
       &:hover {
         &:after {
           transition: opacity $transition-speed ease;
@@ -224,11 +229,38 @@ header {
       }
     }
   }
+
   .communication {
     padding-left: 40px;
     @include respond(0, 1548px) {
       display: none;
     }
+  }
+}
+
+.breadcrumbs {
+
+  @include respond($mobile-breakpoint) {
+    margin: 65px 0 30px 0;
+  }
+  @include respond(0, $mobile-breakpoint) {
+    margin: 35px 0 25px 0;
+  }
+
+  .separator {
+    margin: 0 8px 0 1px;
+    font-size: 16px;
+  }
+
+  a,
+  span {
+    font-size: 13px;
+    color: $purple;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1.769;
+    letter-spacing: 2.5px;
   }
 }
 
@@ -249,6 +281,7 @@ header {
     line-height: 1.2;
     font-weight: 500;
     margin-left: 22px;
+
     a {
       color: $white;
       font-weight: bold;
@@ -271,12 +304,14 @@ header {
     box-sizing: border-box;
     color: $dark;
     line-height: 1.875;
+
     &::placeholder {
       font-size: 16px;
       color: rgb(147, 147, 147);
       line-height: 1.875;
     }
   }
+
   input[type="text"],
   input[type="email"],
   input[type="tel"],
@@ -295,19 +330,23 @@ header {
     padding: 0 24px;
     box-sizing: border-box;
     line-height: 1.875;
+
     &::placeholder {
       font-size: 16px;
       color: rgb(147, 147, 147);
       line-height: 1.875;
     }
   }
+
   .row {
     display: flex;
     justify-content: space-between;
+
     &:not(:last-child) {
       margin-bottom: 7px;
     }
   }
+
   .column {
     width: calc(50% - 3px);
   }
@@ -364,11 +403,13 @@ header {
 footer {
   background: $light-gray;
   flex: 0 0 auto;
+
   .full-height {
     @include respond(1548px) {
       height: 100px;
     }
   }
+
   .communication {
     @include respond(1548px) {
       padding-left: 40px;
@@ -378,6 +419,7 @@ footer {
       margin-bottom: 30px;
     }
   }
+
   nav {
     @include respond(0, $mobile-breakpoint) {
       flex-direction: column;
@@ -403,6 +445,7 @@ footer {
           background: $purple;
           opacity: 0;
         }
+
         &:hover {
           &:after {
             transition: opacity $transition-speed ease;
@@ -413,6 +456,7 @@ footer {
     }
 
   }
+
   .phone {
     @include respond(0, 1548px) {
       display: flex;
@@ -421,14 +465,183 @@ footer {
       margin-right: 55px;
     }
   }
+
   .logo {
     @include respond(1548px) {
       padding-right: 15px;
     }
   }
+
   @include respond(0, 1548px) {
     padding-top: 30px;
     padding-bottom: 30px;
     flex-direction: column;
+  }
+}
+
+.products {
+  @include respond(760px) {
+    margin-bottom: 80px;
+  }
+  @include respond(0, 760px) {
+    margin-bottom: 40px;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.load-more {
+  max-width: 215px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.rent-cards {
+  display: grid;
+  padding-bottom: 50px;
+
+  @include respond($mobile-breakpoint) {
+    padding-top: 25px;
+  }
+  @include respond(0, $mobile-breakpoint) {
+    padding-top: 25px;
+  }
+
+  @include respond(1048px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @include respond(0, 1048px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include respond(0, 760px) {
+    grid-template-columns: 1fr;
+  }
+
+  @include respond(1366px) {
+    grid-gap: 60px;
+  }
+  @include respond(0, 1366px) {
+    grid-gap: 30px;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+
+    .product-actions {
+      display: flex;
+      @include respond(0, 1147px) {
+        margin-top: 20px;
+        flex-direction: column-reverse;
+      }
+      .price {
+        display: inline-flex;
+        font-weight: 500;
+        color: $purple;
+        svg {
+          fill: $purple;
+          transform: translateY(1px);
+        }
+        align-items: center;
+      }
+    }
+
+    .content {
+      flex: 1;
+    }
+
+    .image {
+      display: block;
+      text-decoration: none;
+
+      img {
+        max-width: 100%;
+        width: 100%;
+        display: block;
+      }
+    }
+
+    .product-options {
+      letter-spacing: .4px;
+      font-size: 16px;
+      line-height: 1.75;
+      font-weight: 300;
+      flex: 1;
+
+      b {
+        display: block;
+        font-weight: 500;
+        margin-top: 25px;
+      }
+    }
+
+    .product-inner {
+      @include respond(1147px) {
+        padding: 22px 40px 50px 40px;
+      }
+      @include respond(0, 1147px) {
+        padding: 22px 26px 34px 26px;
+      }
+      box-sizing: border-box;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-link {
+      display: inline-flex;
+      color: $dark;
+      align-items: center;
+      text-decoration: none;
+      transition: color $transition-speed ease;
+
+      @include respond(760px) {
+        margin-right: 22px;
+      }
+      @include respond(0, 760px) {
+        margin-top: 8px;
+      }
+
+      &:hover {
+        color: $orange;
+
+        svg {
+          fill: $orange;
+        }
+      }
+
+      svg {
+        fill: $dark;
+        transition: fill $transition-speed ease;
+        margin-left: 20px;
+      }
+    }
+
+    .product-title {
+      font-size: 28px;
+      text-decoration: none;
+      color: $dark;
+      font-weight: bold;
+      line-height: 1.357;
+      transition: color $transition-speed ease;
+      @include respond(760px) {
+        padding-right: 35px;
+      }
+
+      &:hover {
+        color: $purple;
+      }
+    }
+
+    min-height: 630px;
+    background: $white;
+    box-shadow: none;
+    transition: box-shadow $transition-speed ease;
+
+    &:hover {
+      box-shadow: 0 30px 54px 6px rgba(55, 54, 59, 0.09), 14.142px 14.142px 36px 4px rgba(249, 249, 249, 0.1);
+    }
   }
 }
