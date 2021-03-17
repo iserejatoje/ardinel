@@ -86,6 +86,13 @@ body {
 }
 
 .block-title {
+  margin-bottom: 0;
+  margin-top: 0;
+  &_padding {
+    @include respond($mobile-breakpoint) {
+      padding-top: 22px;
+    }
+  }
   @include respond($mobile-breakpoint) {
     font-size: 52px;
   }
@@ -241,7 +248,7 @@ header {
 .breadcrumbs {
 
   @include respond($mobile-breakpoint) {
-    margin: 65px 0 30px 0;
+    margin: 65px 0 12px 0;
   }
   @include respond(0, $mobile-breakpoint) {
     margin: 35px 0 25px 0;
@@ -479,7 +486,7 @@ footer {
   }
 }
 
-.products {
+.cards-block {
   @include respond(760px) {
     margin-bottom: 80px;
   }
@@ -503,6 +510,7 @@ footer {
   padding-bottom: 70px;
   grid-column-gap: 30px;
   grid-row-gap: 45px;
+  padding-top: 60px;
 
   @include respond(960px) {
     grid-template-columns: 1fr 1fr;
@@ -655,12 +663,57 @@ footer {
   }
 }
 
-.rent-cards {
+.categories {
+  padding-top: 25px;
+  a {
+    font-size: 16px;
+    color: $dark;
+    text-decoration: none;
+    font-weight: 500;
+    line-height: 2.063;
+    position: relative;
+    display: inline-block;
+    letter-spacing: .35px;
+    margin-bottom: 23px;
+    transition: color $transition-speed ease;
+
+    &:hover {
+      color: $purple;
+      &:after {
+        opacity: 1;
+      }
+    }
+
+    &:after {
+      transition: opacity $transition-speed ease;
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      display: block;
+      background: $purple;
+      opacity: 0;
+      bottom: -6px;
+    }
+
+    &:not(:last-child) {
+      margin-right: 46px;
+    }
+  }
+}
+
+.cards-column_3 {
   display: grid;
   padding-bottom: 50px;
 
   @include respond($mobile-breakpoint) {
-    padding-top: 25px;
+    &:not(.fix-padding) {
+      padding-top: 60px;
+    }
+    &.fix-padding {
+      padding-top: 22px;
+    }
   }
   @include respond(0, $mobile-breakpoint) {
     padding-top: 25px;
@@ -733,13 +786,12 @@ footer {
       b {
         display: block;
         font-weight: 500;
-        margin-top: 25px;
       }
     }
 
     .product-inner {
       @include respond(1147px) {
-        padding: 22px 40px 50px 40px;
+        padding: 22px 38px 50px 38px;
       }
       @include respond(0, 1147px) {
         padding: 22px 26px 34px 26px;
@@ -757,9 +809,8 @@ footer {
       font-weight: bold;
       line-height: 1.357;
       transition: color $transition-speed ease;
-      @include respond(760px) {
-        padding-right: 35px;
-      }
+      margin-bottom: 25px;
+      display: inline-block;
 
       &:hover {
         color: $purple;
