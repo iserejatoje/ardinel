@@ -2,6 +2,7 @@
 @import "mixins";
 @import "fonts";
 @import "buttons";
+@import "fancybox";
 @import "contacts";
 
 body,
@@ -88,11 +89,13 @@ body {
 .block-title {
   margin-bottom: 0;
   margin-top: 0;
+
   &_padding {
     @include respond($mobile-breakpoint) {
       padding-top: 22px;
     }
   }
+
   @include respond($mobile-breakpoint) {
     font-size: 52px;
   }
@@ -248,7 +251,7 @@ header {
 .breadcrumbs {
 
   @include respond($mobile-breakpoint) {
-    margin: 65px 0 12px 0;
+    margin: 78px 0 12px 0;
   }
   @include respond(0, $mobile-breakpoint) {
     margin: 35px 0 25px 0;
@@ -257,6 +260,7 @@ header {
   .separator {
     margin: 0 8px 0 1px;
     font-size: 16px;
+    line-height: 1.2;
   }
 
   a,
@@ -278,8 +282,14 @@ header {
 .form {
   .form-controls {
     display: flex;
-    align-items: center;
     margin-top: 20px;
+
+    @include respond(560px) {
+      align-items: center;
+    }
+    @include respond(0, 560px) {
+      flex-direction: column-reverse;
+    }
   }
 
   .form-policy {
@@ -287,7 +297,13 @@ header {
     color: $white;
     line-height: 1.2;
     font-weight: 500;
-    margin-left: 22px;
+
+    @include respond(560px) {
+      margin-left: 22px;
+    }
+    @include respond(0, 560px) {
+      margin-bottom: 20px;
+    }
 
     a {
       color: $white;
@@ -307,7 +323,12 @@ header {
     font-weight: 500;
     max-height: 100px;
     font-size: 16px;
-    padding: 12px 24px;
+    @include respond(640px) {
+      padding: 12px 24px;
+    }
+    @include respond(0, 640px) {
+      padding: 12px 15px;
+    }
     box-sizing: border-box;
     color: $dark;
     line-height: 1.875;
@@ -334,7 +355,12 @@ header {
     font-weight: 500;
     font-size: 16px;
     color: $dark;
-    padding: 0 24px;
+    @include respond(640px) {
+      padding: 0 24px;
+    }
+    @include respond(0, 640px) {
+      padding: 0 15px;
+    }
     box-sizing: border-box;
     line-height: 1.875;
 
@@ -346,8 +372,10 @@ header {
   }
 
   .row {
-    display: flex;
-    justify-content: space-between;
+    @include respond(640px) {
+      display: flex;
+      justify-content: space-between;
+    }
 
     &:not(:last-child) {
       margin-bottom: 7px;
@@ -355,7 +383,12 @@ header {
   }
 
   .column {
-    width: calc(50% - 3px);
+    @include respond(640px) {
+      width: calc(50% - 3px);
+    }
+    @include respond(0, 640px) {
+      margin-bottom: 7px;
+    }
   }
 }
 
@@ -486,7 +519,7 @@ footer {
   }
 }
 
-.cards-block {
+.last-margin {
   @include respond(760px) {
     margin-bottom: 80px;
   }
@@ -500,7 +533,7 @@ footer {
 }
 
 .load-more {
-  max-width: 215px;
+  max-width: 250px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -665,6 +698,7 @@ footer {
 
 .categories {
   padding-top: 25px;
+
   a {
     font-size: 16px;
     color: $dark;
@@ -679,6 +713,7 @@ footer {
 
     &:hover {
       color: $purple;
+
       &:after {
         opacity: 1;
       }
@@ -698,7 +733,12 @@ footer {
     }
 
     &:not(:last-child) {
-      margin-right: 46px;
+      @include respond(450px) {
+        margin-right: 46px;
+      }
+      @include respond(0, 450px) {
+        display: block;
+      }
     }
   }
 }
@@ -803,7 +843,12 @@ footer {
     }
 
     .product-title {
-      font-size: 28px;
+      @include respond($mobile-breakpoint) {
+        font-size: 28px;
+      }
+      @include respond(0, $mobile-breakpoint) {
+        font-size: 23px;
+      }
       text-decoration: none;
       color: $dark;
       font-weight: bold;
@@ -817,13 +862,136 @@ footer {
       }
     }
 
-    min-height: 630px;
+    @include respond(760px) {
+      min-height: 630px;
+    }
     background: $white;
     box-shadow: none;
     transition: box-shadow $transition-speed ease;
 
     &:hover {
       box-shadow: 0 30px 54px 6px rgba(55, 54, 59, 0.09), 14.142px 14.142px 36px 4px rgba(249, 249, 249, 0.1);
+    }
+  }
+}
+
+.project-card {
+
+  @include respond($mobile-breakpoint) {
+    display: flex;
+  }
+
+  @include respond(1300px) {
+    margin-bottom: 190px;
+  }
+  @include respond(0, 1300px) {
+    margin-bottom: 90px;
+  }
+
+  .first {
+    letter-spacing: .4px;
+    flex: 1;
+  }
+
+  .customer-heading {
+    font-size: 28px;
+    color: $dark;
+    font-weight: bold;
+    line-height: 2;
+  }
+
+  .customer-logo {
+    margin-top: 30px;
+
+    img {
+      padding-bottom: 16px;
+      display: block;
+      border-bottom: 1px solid $purple;
+    }
+  }
+
+  .customer-value {
+    color: $dark;
+    @include respond(1300px) {
+      padding-right: 175px;
+      font-size: 20px;
+    }
+    @include respond(0, 1300px) {
+      padding-right: 75px;
+      font-size: 17px;
+    }
+    font-weight: 200;
+    line-height: 1.65;
+  }
+
+  .customer-row {
+    &:not(:last-child) {
+      @include respond(1300px) {
+        margin-bottom: 35px;
+      }
+      @include respond(0, 1300px) {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .project-image {
+    max-width: 100%;
+    @include respond($mobile-breakpoint) {
+      margin-top: 126px;
+    }
+    @include respond(0, $mobile-breakpoint) {
+      margin-top: 35px;
+    }
+
+    @include respond($mobile-breakpoint, 1300px) {
+      max-width: 440px;
+    }
+  }
+
+  .customer-title {
+    font-size: 22px;
+    color: $dark;
+    line-height: 1.227;
+    font-weight: 200;
+    margin-top: 11px;
+
+    @include respond(1300px) {
+      margin-bottom: 50px;
+    }
+    @include respond(0, 1300px) {
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.project-gallery {
+  display: grid;
+  grid-gap: 30px;
+  @include respond($mobile-breakpoint) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @include respond(760px, $mobile-breakpoint) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include respond(0, 760px) {
+    grid-template-columns: 1fr;
+  }
+  margin-bottom: 56px;
+
+  a {
+    display: block;
+
+    img {
+      display: block;
+      max-width: 100%;
+      width: 100%;
+    }
+
+    transition: box-shadow $transition-speed ease;
+
+    &:hover {
+      box-shadow: 0 0 14.25px 0.75px rgba(0, 0, 0, 0.2);
     }
   }
 }
