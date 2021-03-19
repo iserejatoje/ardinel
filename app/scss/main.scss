@@ -4,6 +4,7 @@
 @import "buttons";
 @import "fancybox";
 @import "contacts";
+@import "swiper";
 
 body,
 html {
@@ -251,7 +252,7 @@ header {
 .breadcrumbs {
 
   @include respond($mobile-breakpoint) {
-    margin: 78px 0 12px 0;
+    margin: 62px 0 12px 0;
   }
   @include respond(0, $mobile-breakpoint) {
     margin: 35px 0 25px 0;
@@ -875,6 +876,167 @@ footer {
   }
 }
 
+.advantages {
+
+  @include respond($mobile-breakpoint) {
+    padding: 146px 0;
+  }
+  @include respond(0, $mobile-breakpoint) {
+    padding: 50px 0;
+  }
+
+  .cards {
+    display: grid;
+
+    @include respond($mobile-breakpoint) {
+      margin-top: 62px;
+    }
+    @include respond(0, $mobile-breakpoint) {
+      margin-top: 50px;
+    }
+
+    @include respond(960px) {
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 35px;
+    }
+    @include respond(0, 960px) {
+      grid-template-columns: 1fr;
+      grid-gap: 25px;
+    }
+
+    .card {
+      background: $white;
+      position: relative;
+      min-height: 310px;
+      @include respond(1256px) {
+        padding: 20px 74px 35px 74px;
+      }
+      @include respond(0, 1256px) {
+        padding: 20px;
+      }
+      box-sizing: border-box;
+
+      .top {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .text {
+        @include respond(1256px) {
+          font-size: 21px;
+        }
+        @include respond(0, 1256px) {
+          font-size: 18px;
+        }
+        font-weight: 500;
+        color: $white;
+        line-height: 1.571;
+        letter-spacing: .55px;
+        margin-top: 13px;
+      }
+
+      .icon {
+        padding-top: 22px;
+        @include respond(0, 400px) {
+          display: none;
+        }
+      }
+
+      .sort {
+        font-weight: bold;
+        font-size: 100px;
+        color: transparentize($white, .5);
+        pointer-events: none;
+        user-select: none;
+      }
+
+      > * {
+        position: relative;
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 0;
+        background: transparentize(#211608, .5);
+      }
+    }
+  }
+}
+
+.numbers {
+  display: grid;
+  margin-top: 44px;
+  grid-gap: 35px;
+
+  @include respond($mobile-breakpoint) {
+    padding-bottom: 140px;
+  }
+  @include respond(0, $mobile-breakpoint) {
+    padding-bottom: 50px;
+  }
+
+  @include respond(1252px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @include respond(860px, 1252px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include respond(0, 860px) {
+    grid-template-columns: 1fr;
+  }
+
+  .cell {
+    @include respond($mobile-breakpoint) {
+      padding: 42px;
+      height: 408px;
+    }
+    @include respond(0, $mobile-breakpoint) {
+      padding: 30px 20px;
+    }
+    background: $orange;
+    color: $white;
+    text-align: center;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+
+    .title {
+      font-size: 22px;
+      font-weight: 500;
+      text-transform: uppercase;
+      margin-bottom: 37px;
+    }
+
+    .text {
+      font-weight: 300;
+      @include respond($mobile-breakpoint) {
+        font-size: 21px;
+      }
+      @include respond(0, $mobile-breakpoint) {
+        font-size: 18px;
+      }
+      margin-top: 22px;
+      line-height: 1.429;
+      padding: 0 8px;
+    }
+
+    .number-title {
+      font-size: 21px;
+      font-weight: 500;
+    }
+
+    .number {
+      font-size: 52px;
+      font-weight: bold;
+    }
+  }
+}
+
 .project-card {
 
   @include respond($mobile-breakpoint) {
@@ -992,6 +1154,222 @@ footer {
 
     &:hover {
       box-shadow: 0 0 14.25px 0.75px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+.about-block {
+  margin-top: 40px;
+
+  .about-title {
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 1.571;
+    margin-top: 24px;
+    letter-spacing: .5px;
+  }
+
+  .about-text {
+    font-size: 18px;
+    line-height: 1.667;
+    font-weight: 300;
+    letter-spacing: .4px;
+  }
+
+  .columns {
+    @include respond(1226px) {
+      display: flex;
+    }
+
+    .column {
+
+      @include respond(1226px) {
+        width: 50%;
+      }
+
+      &:first-child {
+        @include respond(1226px) {
+          padding-right: 112px;
+          box-sizing: border-box;
+        }
+      }
+
+      &:last-child {
+        @include respond(1226px) {
+          text-align: right;
+        }
+      }
+
+      img {
+        max-width: 100%;
+        margin-top: 15px;
+      }
+    }
+  }
+}
+
+.documents-block {
+  background: $white;
+  overflow: hidden;
+
+  @include respond($mobile-breakpoint) {
+    padding: 150px 0;
+  }
+  @include respond(0, $mobile-breakpoint) {
+    padding: 50px 0;
+  }
+
+  .documents-slider {
+    overflow: visible;
+
+    @include respond(550px) {
+      margin-top: 60px;
+    }
+    @include respond(0, 550px) {
+      margin-top: 25px;
+    }
+  }
+
+  .swiper-slide {
+    color: $white;
+    text-decoration: none;
+    display: flex;
+
+    .doc-info {
+      display: flex;
+      flex-direction: column;
+      padding: 55px 40px;
+      box-sizing: border-box;
+    }
+
+    .extension {
+      width: 55px;
+      height: 55px;
+      border: 2px solid $white;
+      font-size: 21px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 25px;
+    }
+
+    .title {
+      font-size: 28px;
+      font-weight: bold;
+      line-height: 1.357;
+      margin-bottom: auto;
+    }
+
+    outline: none;
+    background: $gray-document;
+    min-height: 550px;
+    box-sizing: border-box;
+    box-shadow: 0 30px 54px 6px rgba(55, 54, 59, 0.13), 14.142px 14.142px 36px 4px rgba(249, 249, 249, 0.1);
+    transition: box-shadow $transition-speed ease;
+
+    .doc-image {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      img {
+        max-height: 388px;
+        max-width: 100%;
+      }
+    }
+
+    &:hover {
+      background: $orange;
+      box-shadow: 0 30px 54px 6px rgba(55, 54, 59, 0.13), 14.142px 14.142px 36px 4px rgba(249, 249, 249, 0.1), 0 30px 54px 6px rgba(55, 54, 59, 0.13), 14.142px 14.142px 36px 4px rgba(249, 249, 249, 0.1);
+      .doc-image {
+        display: flex;
+      }
+
+      .doc-info {
+        display: none;
+      }
+    }
+  }
+}
+
+.swiper-pagination {
+  @include respond(0, 666px) {
+    margin-bottom: 38px;
+  }
+}
+
+.slider-bottom {
+  display: flex;
+
+  @include respond(666px) {
+    justify-content: space-between;
+    margin-top: 45px;
+  }
+  @include respond(0, 666px) {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px;
+  }
+}
+
+.slider-header {
+  display: flex;
+
+  @include respond(550px) {
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @include respond(0, 550px) {
+    flex-direction: column;
+  }
+
+  .block-title {
+    margin-right: 35px;
+  }
+}
+
+.swiper-control {
+  display: flex;
+  align-items: center;
+
+  @include respond(0, 550px) {
+    margin-top: 20px;
+  }
+}
+
+.swiper-button-prev {
+  margin-right: 20px;
+
+  svg {
+    transform: rotate(180deg);
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  width: 55px;
+  height: 55px;
+  background: $swiper-button;
+  display: flex;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  transition: background $transition-speed ease;
+
+  svg {
+    fill: $dark;
+    transition: fill $transition-speed ease;
+  }
+
+  &:hover {
+    background: $orange;
+
+    svg {
+      fill: $white;
     }
   }
 }

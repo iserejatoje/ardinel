@@ -1,4 +1,34 @@
 $(document).ready(function () {
+
+    let documents = new Swiper('.documents-slider', {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        watchSlidesVisibility: true,
+        preloadImages: false,
+        lazy: true,
+        pagination: {
+            el: '.documents-block .swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.documents-block .swiper-button-next',
+            prevEl: '.documents-block .swiper-button-prev',
+        },
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
+                spaceBetween: 30,
+            },
+            900: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+            },
+            1355: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+        }
+    });
 });
 
 let map;
