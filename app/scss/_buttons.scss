@@ -22,6 +22,13 @@
       background: $orange-hovered;
     }
   }
+  &-white {
+    background: $white;
+    color: $dark;
+    &:hover {
+      background: $light-gray;
+    }
+  }
   &-purple {
     background: $purple;
     color: $white;

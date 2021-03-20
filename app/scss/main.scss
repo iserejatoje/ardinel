@@ -252,10 +252,10 @@ header {
 .breadcrumbs {
 
   @include respond($mobile-breakpoint) {
-    margin: 62px 0 12px 0;
+    padding: 62px 0 12px 0;
   }
   @include respond(0, $mobile-breakpoint) {
-    margin: 35px 0 25px 0;
+    padding: 35px 0 25px 0;
   }
 
   .separator {
@@ -264,15 +264,121 @@ header {
     line-height: 1.2;
   }
 
+  &:not(&-white) {
+    a,
+    span {
+      color: $purple;
+    }
+  }
+
+  &-white {
+    a,
+    span {
+      color: $white;
+    }
+  }
+
   a,
   span {
     font-size: 13px;
-    color: $purple;
     text-decoration: none;
     font-weight: 600;
     text-transform: uppercase;
     line-height: 1.769;
     letter-spacing: 2.5px;
+  }
+}
+
+.relative {
+  position: relative;
+  z-index: 1;
+}
+
+.big-slider {
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 80px;
+  .icon-down {
+    margin-top: 70px;
+    @include respond(0, $mobile-breakpoint) {
+      display: none;
+    }
+  }
+  .buttons {
+    @include respond($mobile-breakpoint) {
+      margin-top: 90px;
+    }
+    @include respond(0, $mobile-breakpoint) {
+      margin-top: 35px;
+    }
+    display: flex;
+    @include respond(0, $mobile-breakpoint) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .btn {
+      padding: 0 25px;
+    }
+    .btn-orange {
+      max-width: 260px;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      @include respond($mobile-breakpoint) {
+        margin-right: 30px;
+      }
+      @include respond(0, $mobile-breakpoint) {
+        margin-bottom: 14px;
+      }
+    }
+    .btn-white {
+      max-width: 260px;
+      text-align: center;
+      box-sizing: border-box;
+      width: 100%;
+    }
+  }
+  .title {
+    @include respond($mobile-breakpoint) {
+      font-size: 60px;
+    }
+    @include respond(0, $mobile-breakpoint) {
+      font-size: 30px;
+    }
+    color: $white;
+    font-weight: bold;
+    line-height: 1.167;
+    max-width: 680px;
+    @include respond($mobile-breakpoint) {
+      margin-top: 65px;
+    }
+    @include respond(0, $mobile-breakpoint) {
+      margin-top: 35px;
+    }
+    letter-spacing: .5px;
+  }
+  .text {
+    @include respond($mobile-breakpoint) {
+      font-size: 21px;
+    }
+    @include respond(0, $mobile-breakpoint) {
+      font-size: 18px;
+    }
+    color: $white;
+    line-height: 1.429;
+    max-width: 584px;
+    margin-top: 21px;
+    letter-spacing: .6px;
+  }
+  &:after {
+    background: transparentize(#2e1a00, .6);
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 0;
   }
 }
 
@@ -744,7 +850,7 @@ footer {
   }
 }
 
-.cards-column_3 {
+.cards {
   display: grid;
   padding-bottom: 50px;
 
@@ -777,6 +883,10 @@ footer {
     grid-gap: 30px;
   }
 
+}
+
+.cards-wrapper {
+
   .card {
     display: flex;
     flex-direction: column;
@@ -804,6 +914,8 @@ footer {
 
     .content {
       flex: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     .image {
@@ -831,6 +943,7 @@ footer {
     }
 
     .product-inner {
+      flex: 1;
       @include respond(1147px) {
         padding: 22px 38px 50px 38px;
       }
@@ -1208,6 +1321,43 @@ footer {
   }
 }
 
+.swiper-container {
+  &:not(.service-info_slider) {
+    overflow: visible;
+  }
+}
+
+.service-block {
+  background: $gray;
+  overflow: hidden;
+
+  .swiper-control {
+    @include respond(750px) {
+      margin-top: 46px;
+    }
+    @include respond(0, 750px) {
+      margin-top: 25px;
+    }
+  }
+
+  @include respond($mobile-breakpoint) {
+    padding: 112px 0 173px 0;
+  }
+  @include respond(0, $mobile-breakpoint) {
+    padding: 50px 0;
+  }
+
+  .projects-slider {
+
+    @include respond(750px) {
+      margin-top: 48px;
+    }
+    @include respond(0, 750px) {
+      margin-top: 25px;
+    }
+  }
+}
+
 .documents-block {
   background: $white;
   overflow: hidden;
@@ -1220,7 +1370,6 @@ footer {
   }
 
   .documents-slider {
-    overflow: visible;
 
     @include respond(550px) {
       margin-top: 60px;
@@ -1273,6 +1422,7 @@ footer {
       align-items: center;
       justify-content: center;
       width: 100%;
+
       img {
         max-height: 388px;
         max-width: 100%;
@@ -1282,6 +1432,7 @@ footer {
     &:hover {
       background: $orange;
       box-shadow: 0 30px 54px 6px rgba(55, 54, 59, 0.13), 14.142px 14.142px 36px 4px rgba(249, 249, 249, 0.1), 0 30px 54px 6px rgba(55, 54, 59, 0.13), 14.142px 14.142px 36px 4px rgba(249, 249, 249, 0.1);
+
       .doc-image {
         display: flex;
       }
@@ -1294,7 +1445,7 @@ footer {
 }
 
 .swiper-pagination {
-  @include respond(0, 666px) {
+  @include respond(0, 950px) {
     margin-bottom: 38px;
   }
 }
@@ -1316,12 +1467,12 @@ footer {
 .slider-header {
   display: flex;
 
-  @include respond(550px) {
+  @include respond(720px) {
     align-items: center;
     justify-content: space-between;
   }
 
-  @include respond(0, 550px) {
+  @include respond(0, 720px) {
     flex-direction: column;
   }
 
@@ -1370,6 +1521,174 @@ footer {
 
     svg {
       fill: $white;
+    }
+  }
+}
+
+.half {
+  @include respond(1218px) {
+    width: 50%;
+    box-sizing: border-box;
+  }
+
+  @include respond(1310px) {
+    padding-right: 135px;
+  }
+  @include respond(1218px, 1310px) {
+    padding-right: 45px;
+  }
+
+  p {
+    margin-bottom: 26px;
+  }
+}
+
+.service-info_slider {
+  @include respond(1218px) {
+    transform: translateY(-38px);
+    .swiper-wrapper {
+      padding: 25px 0 55px 55px;
+    }
+  }
+  @include respond(0, 1218px) {
+    padding: 20px 20px 50px 20px;
+    box-sizing: border-box;
+  }
+}
+
+.little-logo {
+  fill: $icon-svg;
+  z-index: 1;
+  position: absolute;
+  bottom: 48px;
+  right: 40px;
+  pointer-events: none;
+}
+
+.big-logo {
+  fill: transparentize($white, .9);
+  z-index: 1;
+  position: absolute;
+  right: -46px;
+  bottom: -78px;
+  pointer-events: none;
+}
+
+.slider-annotation {
+  @include respond($mobile-breakpoint) {
+    font-size: 21px;
+  }
+  @include respond(0, $mobile-breakpoint) {
+    font-size: 18px;
+  }
+  line-height: 1.571;
+  margin-top: 24px;
+  font-weight: 500;
+}
+
+.service-info {
+  position: relative;
+
+  @include respond(1218px) {
+    margin: 145px 0 123px 0;
+  }
+  @include respond(0, 1218px) {
+    margin: 45px 0 0 0;
+  }
+
+  .title,
+  b,
+  strong {
+    @include respond($mobile-breakpoint) {
+      font-size: 21px;
+    }
+    @include respond(0, $mobile-breakpoint) {
+      font-size: 18px;
+    }
+
+    font-weight: 500;
+    line-height: 1.571;
+    letter-spacing: .5px;
+  }
+
+  .text,
+  p {
+    font-weight: 300;
+    letter-spacing: .4px;
+    line-height: 1.7;
+
+    @include respond($mobile-breakpoint) {
+      font-size: 18px;
+    }
+    @include respond(0, $mobile-breakpoint) {
+      font-size: 16px;
+    }
+  }
+
+  .label {
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: $purple;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.769;
+    letter-spacing: 3px;
+  }
+
+  .first {
+    @include respond(1218px) {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+  }
+
+  .slider-bottom {
+    margin-top: 0;
+    position: relative;
+    z-index: 1;
+
+    @include respond(1218px) {
+      padding-left: 55px;
+      transform: translateY(-66px);
+    }
+    @include respond(0, 1218px) {
+      padding: 0 20px;
+      transform: translateY(-25px);
+    }
+
+  }
+
+  .columns {
+
+    @include respond(1218px) {
+      display: flex;
+    }
+
+    .swiper-slide {
+      @include respond(1218px) {
+        max-width: 590px !important;
+        width: 100% !important;
+      }
+      transition: box-shadow $transition-speed ease;
+      &:hover {
+        box-shadow: 0 14px 32px 5px rgba(55, 54, 59, 0.26);
+      }
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    .column {
+      @include respond(1218px) {
+        width: 50%;
+        margin-left: 50%;
+        position: relative;
+      }
     }
   }
 }

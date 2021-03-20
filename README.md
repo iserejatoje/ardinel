@@ -8,5 +8,6 @@ _Строительная компания_
 - [Выполненные работы](https://iserejatoje.github.io/ardinel/projects.html)
 - [Карточка проекта](https://iserejatoje.github.io/ardinel/project.html)
 - [О компании](https://iserejatoje.github.io/ardinel/about.html)
+- [Карточка услуги](https://iserejatoje.github.io/ardinel/service.html)
 
 Создано с ❤

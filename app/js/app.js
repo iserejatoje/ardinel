@@ -29,6 +29,67 @@ $(document).ready(function () {
             },
         }
     });
+
+    let projects = new Swiper('.projects-slider', {
+        slidesPerView: 3,
+        spaceBetween: 60,
+        watchSlidesVisibility: true,
+        preloadImages: false,
+        lazy: true,
+        pagination: {
+            el: '.service-block .swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.service-block .swiper-button-next',
+            prevEl: '.service-block .swiper-button-prev',
+        },
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
+                spaceBetween: 60,
+            },
+            900: {
+                slidesPerView: 2,
+                spaceBetween: 60,
+            },
+            1355: {
+                slidesPerView: 3,
+                spaceBetween: 60,
+            },
+        }
+    });
+
+    let service = new Swiper('.service-info_slider', {
+        pagination: {
+            el: '.service-info .swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.service-info_slider .swiper-button-next',
+            prevEl: '.service-info_slider .swiper-button-prev',
+        },
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
+                spaceBetween: 90
+            },
+            950: {
+                slidesPerView: 2,
+                spaceBetween: 45
+            },
+            1218: {
+                slidesPerView: 'auto',
+                spaceBetween: 90
+            }
+        }
+    });
+
+    $(window).resize(function(){
+        service.reInit();
+    })
+
+    $(window).trigger('resize');
 });
 
 let map;
