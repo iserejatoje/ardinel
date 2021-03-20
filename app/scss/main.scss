@@ -176,10 +176,17 @@ nav {
   }
 }
 
+.app-content {
+  padding-top: 100px;
+}
+
 header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
   background: $white;
   box-shadow: 0 0 50px 0 rgba(38, 37, 39, 0.3);
-  position: relative;
   z-index: 2;
 
   .full-height {
