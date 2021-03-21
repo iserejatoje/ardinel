@@ -2,6 +2,7 @@
 
 _Строительная компания_
 
+- [Главная](https://iserejatoje.github.io/ardinel/frontpage.html)
 - [Контакты](https://iserejatoje.github.io/ardinel/contacts.html)
 - [Аренда спецтехники](https://iserejatoje.github.io/ardinel/rent.html)
 - [Услуги](https://iserejatoje.github.io/ardinel/services.html)

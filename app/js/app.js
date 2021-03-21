@@ -1,5 +1,34 @@
 $(document).ready(function () {
 
+    let frontpage = new Swiper('.frontpage-slider', {
+        slidesPerView: 1,
+        speed: 800,
+        loop: true,
+        disableOnInteraction: true,
+        autoplay: {
+            delay: 8000,
+        },
+        pagination: {
+            el: '.big-slider.frontpage .swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.frontpage-slider .swiper-button-next',
+            prevEl: '.frontpage-slider .swiper-button-prev',
+        },
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
+                direction: 'horizontal',
+            },
+            1024: {
+                slidesPerView: 1,
+                direction: 'vertical',
+            }
+
+        }
+    });
+
     let documents = new Swiper('.documents-slider', {
         slidesPerView: 3,
         spaceBetween: 30,
@@ -26,6 +55,64 @@ $(document).ready(function () {
             1355: {
                 slidesPerView: 3,
                 spaceBetween: 30,
+            },
+        }
+    });
+
+    let frontpage_services = new Swiper('.frontpage-service_slider', {
+        slidesPerView: 3,
+        spaceBetween: 60,
+        watchSlidesVisibility: true,
+        preloadImages: false,
+        lazy: true,
+        pagination: {
+            el: '.service-block.simple .swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.service-block.simple .swiper-button-next',
+            prevEl: '.service-block.simple .swiper-button-prev',
+        },
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
+            },
+            900: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+            },
+            1355: {
+                slidesPerView: 3,
+                spaceBetween: 60,
+            },
+        }
+    });
+
+    let partners = new Swiper('.partners-slider', {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        watchSlidesVisibility: true,
+        preloadImages: false,
+        lazy: true,
+        pagination: {
+            el: '.partners-block .swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.partners-block .swiper-button-next',
+            prevEl: '.partners-block .swiper-button-prev',
+        },
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
+            },
+            900: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+            },
+            1355: {
+                slidesPerView: 3,
+                spaceBetween: 60,
             },
         }
     });
@@ -60,6 +147,31 @@ $(document).ready(function () {
         }
     });
 
+    let reviews = new Swiper('.reviews-slider', {
+        pagination: {
+            el: '.reviews-block .swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.reviews-block .swiper-button-next',
+            prevEl: '.reviews-block .swiper-button-prev',
+        },
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
+                spaceBetween: 90
+            },
+            950: {
+                slidesPerView: 2,
+                spaceBetween: 30
+            },
+            1218: {
+                slidesPerView: 'auto',
+                spaceBetween: 90
+            }
+        }
+    });
+
     let service = new Swiper('.service-info_slider', {
         pagination: {
             el: '.service-info .swiper-pagination',
@@ -76,7 +188,7 @@ $(document).ready(function () {
             },
             950: {
                 slidesPerView: 2,
-                spaceBetween: 45
+                spaceBetween: 30
             },
             1218: {
                 slidesPerView: 'auto',
@@ -85,8 +197,10 @@ $(document).ready(function () {
         }
     });
 
-    $(window).resize(function(){
-        service.reInit();
+    $(window).resize(function() {
+        if (service.length) {
+            service.reInit();
+        }
     })
 
     $(window).trigger('resize');

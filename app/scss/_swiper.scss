@@ -198,35 +198,10 @@
   transform: scale(0.33);
 }
 
-.swiper-pagination-bullet {
-  width: 7px;
-  height: 7px;
-  display: inline-block;
-  border-radius: 8px;
-  transition: width $transition-speed ease;
-  background: transparentize($dark, .7);
-  outline: none;
-  &:not(:last-child) {
-    margin-right: 15px;
-  }
-}
-
-button.swiper-pagination-bullet {
-  border: none;
-  margin: 0;
-  padding: 0;
-  box-shadow: none;
-  appearance: none;
-}
-
 .swiper-pagination-clickable .swiper-pagination-bullet {
   cursor: pointer;
 }
 
-.swiper-pagination-bullet-active {
-  background: $dark;
-  width: 28px;
-}
 
 .swiper-container-vertical > .swiper-pagination-bullets {
   right: 10px;

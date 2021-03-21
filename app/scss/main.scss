@@ -304,13 +304,72 @@ header {
 .big-slider {
   overflow: hidden;
   position: relative;
-  padding-bottom: 80px;
+  box-sizing: border-box;
+  @include respond($mobile-breakpoint) {
+    min-height: calc(100vh - 100px);
+  }
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
   .icon-down {
-    margin-top: 70px;
+    margin-top: auto;
+  }
+
+  .relative {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .icon-down {
+    transform: translateX(-10px);
     @include respond(0, $mobile-breakpoint) {
       display: none;
     }
   }
+
+  &:not(.frontpage) {
+    height: 800px;
+    padding-bottom: 80px;
+
+    .buttons {
+      @include respond($mobile-breakpoint) {
+        margin-top: 90px;
+      }
+      @include respond(0, $mobile-breakpoint) {
+        margin-top: 35px;
+      }
+    }
+  }
+
+  &.frontpage {
+    @include respond($mobile-breakpoint) {
+      min-height: 660px;
+      height: calc(100vh - 100px);
+    }
+    @include respond(0, $mobile-breakpoint) {
+      //min-height: 480px;
+      padding: 30px 0 38px 0;
+    }
+
+    .swiper-slide {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .buttons {
+      @include respond($mobile-breakpoint) {
+        margin-top: 40px;
+        margin-bottom: 98px;
+      }
+      @include respond(0, $mobile-breakpoint) {
+        margin-top: 25px;
+        margin-bottom: 28px;
+      }
+    }
+  }
+
   .buttons {
     @include respond($mobile-breakpoint) {
       margin-top: 90px;
@@ -323,9 +382,11 @@ header {
       flex-direction: column;
       align-items: flex-start;
     }
+
     .btn {
-      padding: 0 25px;
+      padding: 0 22px;
     }
+
     .btn-orange {
       max-width: 260px;
       width: 100%;
@@ -338,6 +399,7 @@ header {
         margin-bottom: 14px;
       }
     }
+
     .btn-white {
       max-width: 260px;
       text-align: center;
@@ -345,25 +407,31 @@ header {
       width: 100%;
     }
   }
+
   .title {
-    @include respond($mobile-breakpoint) {
-      font-size: 60px;
-    }
-    @include respond(0, $mobile-breakpoint) {
-      font-size: 30px;
-    }
-    color: $white;
-    font-weight: bold;
-    line-height: 1.167;
-    max-width: 680px;
     @include respond($mobile-breakpoint) {
       margin-top: 65px;
     }
     @include respond(0, $mobile-breakpoint) {
       margin-top: 35px;
     }
+  }
+
+  .title {
+    @include respond($mobile-breakpoint) {
+      font-size: 60px;
+    }
+    @include respond(0, $mobile-breakpoint) {
+      font-size: 18px;
+    }
+    color: $white;
+    font-weight: bold;
+    line-height: 1.167;
+    max-width: 680px;
+
     letter-spacing: .5px;
   }
+
   .text {
     @include respond($mobile-breakpoint) {
       font-size: 21px;
@@ -377,15 +445,31 @@ header {
     margin-top: 21px;
     letter-spacing: .6px;
   }
-  &:after {
-    background: transparentize(#2e1a00, .6);
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: 0;
+
+  &.frontpage {
+    &:after {
+      background: transparentize(#333335, .8);
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 0;
+    }
+  }
+
+  &:not(.frontpage) {
+    &:after {
+      background: transparentize(#2e1a00, .6);
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 0;
+    }
   }
 }
 
@@ -1279,10 +1363,26 @@ footer {
 }
 
 .about-block {
-  margin-top: 40px;
+  &:not(.frontpage) {
+    margin-top: 40px;
+  }
+
+  &.frontpage {
+    @include respond($mobile-breakpoint) {
+      padding: 125px 0 140px 0;
+    }
+    @include respond(0, $mobile-breakpoint) {
+      padding: 30px 0 45px 0;
+    }
+  }
 
   .about-title {
-    font-size: 21px;
+    @include respond($mobile-breakpoint) {
+      font-size: 21px;
+    }
+    @include respond(0, $mobile-breakpoint) {
+      font-size: 18px;
+    }
     font-weight: 500;
     line-height: 1.571;
     margin-top: 24px;
@@ -1290,7 +1390,12 @@ footer {
   }
 
   .about-text {
-    font-size: 18px;
+    @include respond($mobile-breakpoint) {
+      font-size: 18px;
+    }
+    @include respond(0, $mobile-breakpoint) {
+      font-size: 16px;
+    }
     line-height: 1.667;
     font-weight: 300;
     letter-spacing: .4px;
@@ -1329,7 +1434,7 @@ footer {
 }
 
 .swiper-container {
-  &:not(.service-info_slider) {
+  &:not(.service-info_slider):not(.frontpage-slider) {
     overflow: visible;
   }
 }
@@ -1338,12 +1443,14 @@ footer {
   background: $gray;
   overflow: hidden;
 
-  .swiper-control {
-    @include respond(750px) {
-      margin-top: 46px;
-    }
-    @include respond(0, 750px) {
-      margin-top: 25px;
+  &:not(.simple) {
+    .swiper-control {
+      @include respond(750px) {
+        margin-top: 55px;
+      }
+      @include respond(0, 750px) {
+        margin-top: 25px;
+      }
     }
   }
 
@@ -1351,11 +1458,10 @@ footer {
     padding: 112px 0 173px 0;
   }
   @include respond(0, $mobile-breakpoint) {
-    padding: 50px 0;
+    padding: 50px 0 10px 0;
   }
 
   .projects-slider {
-
     @include respond(750px) {
       margin-top: 48px;
     }
@@ -1495,6 +1601,16 @@ footer {
   @include respond(0, 550px) {
     margin-top: 20px;
   }
+
+  &.dark {
+    .swiper-button-prev,
+    .swiper-button-next {
+      background: #e1e1e3;
+      &:hover {
+        background: $orange;
+      }
+    }
+  }
 }
 
 .swiper-button-prev {
@@ -1570,6 +1686,9 @@ footer {
   bottom: 48px;
   right: 40px;
   pointer-events: none;
+  @include respond(0, 940px) {
+    display: none;
+  }
 }
 
 .big-logo {
@@ -1632,16 +1751,6 @@ footer {
     }
   }
 
-  .label {
-    margin-bottom: 16px;
-    font-size: 13px;
-    color: $purple;
-    font-weight: bold;
-    text-transform: uppercase;
-    line-height: 1.769;
-    letter-spacing: 3px;
-  }
-
   .first {
     @include respond(1218px) {
       position: absolute;
@@ -1680,6 +1789,7 @@ footer {
         width: 100% !important;
       }
       transition: box-shadow $transition-speed ease;
+
       &:hover {
         box-shadow: 0 14px 32px 5px rgba(55, 54, 59, 0.26);
       }
@@ -1697,5 +1807,297 @@ footer {
         position: relative;
       }
     }
+  }
+}
+
+.read-more {
+  margin-top: 28px;
+}
+
+.with-padding {
+  padding-top: 25px;
+}
+
+.label {
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: $purple;
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 1.769;
+  letter-spacing: 3px;
+}
+
+.frontpage-slider {
+  margin: 0;
+  box-sizing: border-box;
+
+  .swiper-slide {
+    @include respond($mobile-breakpoint) {
+      padding-left: 72px;
+    }
+
+    .container {
+      @include respond(0, $mobile-breakpoint) {
+      }
+    }
+  }
+}
+
+.white {
+  display: flex;
+  z-index: 1;
+
+  @include respond(0, $mobile-breakpoint) {
+    padding: 0 20px;
+  }
+  @include respond($mobile-breakpoint) {
+    position: absolute;
+    left: 40px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .swiper-pagination-bullet {
+    background: transparentize($white, .6);
+  }
+
+  .swiper-pagination-bullet-active {
+    background: $white;
+  }
+}
+
+.swiper-container-vertical + .swiper-pagination {
+
+  .swiper-pagination-bullet {
+    background: transparentize($white, .7);
+    transition: height $transition-speed ease, color $transition-speed ease;
+
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+  }
+
+  .swiper-pagination-bullet-active {
+    height: 28px;
+    width: 7px;
+    background: $white;
+  }
+}
+
+.swiper-pagination-bullet {
+  width: 7px;
+  height: 7px;
+  display: inline-block;
+  border-radius: 8px;
+  transition: width $transition-speed ease;
+  background: transparentize($dark, .7);
+  outline: none;
+
+  &:not(:last-child) {
+    margin-right: 15px;
+  }
+}
+
+button.swiper-pagination-bullet {
+  border: none;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  appearance: none;
+}
+
+.swiper-pagination-bullet-active {
+  background: $dark;
+  width: 28px;
+}
+
+.partners-block {
+  overflow: hidden;
+
+  .partners-slider {
+    @include respond($mobile-breakpoint) {
+      margin-top: 50px;
+    }
+    @include respond(0, $mobile-breakpoint) {
+      margin-top: 30px;
+    }
+  }
+
+  .swiper-slide {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: 1px solid transparentize(#353338, .7);
+    transition: border-color $transition-speed ease;
+
+    &:hover {
+      border: 1px solid #353338;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+  }
+
+  @include respond($mobile-breakpoint) {
+    padding: 125px 0 100px 0;
+  }
+  @include respond(0, $mobile-breakpoint) {
+    padding: 45px 0 46px 0;
+  }
+
+  .swiper-control {
+    @include respond(750px) {
+      margin-top: 55px;
+    }
+    @include respond(0, 750px) {
+      margin-top: 25px;
+    }
+  }
+}
+
+.frontpage-service_slider {
+  margin-top: 62px;
+
+  .swiper-slide {
+    position: relative;
+    text-decoration: none;
+    @include respond(900px) {
+      padding: 55px 48px;
+      height: 450px;
+    }
+    @include respond(0, 900px) {
+      padding: 35px;
+      height: 355px;
+    }
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+
+    .number {
+      text-align: right;
+      margin-top: auto;
+      position: relative;
+      color: $white;
+      font-size: 16px;
+      font-weight: 600;
+      z-index: 1;
+
+      span {
+        font-size: 26px;
+        font-weight: 500;
+      }
+    }
+
+    .title {
+      position: relative;
+      z-index: 1;
+      @include respond(900px) {
+        font-size: 28px;
+      }
+      @include respond(0, 900px) {
+        font-size: 22px;
+      }
+      color: $white;
+      font-weight: bold;
+      line-height: 1.357;
+    }
+
+    &:after {
+      content: '';
+      background: transparentize(#000, .76);
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+  }
+}
+
+.reviews-block {
+  overflow: hidden;
+
+  @include respond($mobile-breakpoint) {
+    padding: 110px 0 100px 0;
+  }
+  @include respond(0, $mobile-breakpoint) {
+    padding: 50px 0 20px 0;
+  }
+
+  .reviews-slider {
+    @include respond($mobile-breakpoint) {
+      margin-top: 45px;
+    }
+    @include respond(0, $mobile-breakpoint) {
+      margin-top: 30px;
+    }
+  }
+
+  .icon {
+    opacity: .1;
+    @include respond(1218px) {
+      position: absolute;
+      right: 40px;
+      bottom: 40px;
+    }
+    @include respond(0, 1218px) {
+      order: -1;
+      margin-bottom: 20px;
+    }
+
+  }
+
+  .detail-link {
+    margin-top: auto;
+    padding-top: 20px;
+  }
+
+  .swiper-slide {
+    width: 840px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    @include respond(1218px) {
+      height: 380px;
+    }
+    padding: 50px 40px;
+    box-sizing: border-box;
+    border: 1px solid transparentize($dark, .7);
+    transition: border-color $transition-speed ease;
+
+    &:hover {
+      border-color: $dark;
+    }
+  }
+
+  .person {
+    font-size: 21px;
+    color: $dark;
+    font-weight: 500;
+    line-height: 1.571;
+  }
+
+  .role {
+    font-size: 18px;
+    color: transparentize($dark, .5);
+    line-height: 1.667;
+    font-weight: 300;
+    margin: 8px 0 18px 0;
+  }
+
+  .text {
+    font-size: 16px;
+    color: $dark;
+    line-height: 1.75;
+    font-weight: 300;
   }
 }
