@@ -2061,13 +2061,13 @@ button.swiper-pagination-bullet {
   }
 
   .swiper-slide {
-    width: 840px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 
     @include respond(1218px) {
       height: 380px;
+      width: 840px;
     }
     padding: 50px 40px;
     box-sizing: border-box;

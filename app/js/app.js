@@ -159,7 +159,7 @@ $(document).ready(function () {
         breakpoints: {
             0: {
                 slidesPerView: 1,
-                spaceBetween: 90
+                spaceBetween: 30
             },
             950: {
                 slidesPerView: 2,
@@ -173,6 +173,8 @@ $(document).ready(function () {
     });
 
     let service = new Swiper('.service-info_slider', {
+        slidesPerView: 1,
+        spaceBetween: 30,
         pagination: {
             el: '.service-info .swiper-pagination',
             clickable: true,
@@ -184,7 +186,7 @@ $(document).ready(function () {
         breakpoints: {
             0: {
                 slidesPerView: 1,
-                spaceBetween: 90
+                spaceBetween: 30
             },
             950: {
                 slidesPerView: 2,
@@ -198,8 +200,15 @@ $(document).ready(function () {
     });
 
     $(window).resize(function() {
-        if (service.length) {
-            service.reInit();
+        if ($('.service-info_slider').length > 0) {
+            service.update();
+        }
+
+        if ($('.reviews-slider').length > 0) {
+            if ($(window).width() > 1218) {
+                $('.reviews-slider .swiper-slide').css('width', '840');
+            }
+            reviews.update();
         }
     })
 
